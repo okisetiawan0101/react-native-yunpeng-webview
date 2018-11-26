@@ -33,6 +33,9 @@ public class YPWebViewManager extends ReactWebViewManager {
   protected static class YPWebViewClient extends ReactWebViewClient {
     @Override
     public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
+      if(error == null) {
+        handler.cancel();
+      }
       handler.proceed();
     }
   }
